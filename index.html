@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Valindorn</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: Georgia, "Times New Roman", serif;
+            background:
+                radial-gradient(circle at top, #20203a 0%, #0b0b14 45%);
+            color: #eeeef5;
+            line-height: 1.7;
+        }
+
+        header {
+            min-height: 620px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 80px 20px;
+            position: relative;
+            overflow: hidden;
+            background:
+                linear-gradient(
+                    rgba(8, 7, 20, 0.42),
+                    rgba(8, 7, 20, 0.82)
+                ),
+                url("valindorn-background.png");
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            border-bottom: 1px solid #44445c;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            position: relative;
+            z-index: 1;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: clamp(48px, 10vw, 88px);
+            letter-spacing: 12px;
+            text-shadow:
+                0 0 12px #000000,
+                0 0 25px #7777aa,
+                0 0 45px #000000;
+        }
+
+        header p {
+            font-size: clamp(18px, 3vw, 25px);
+            color: #e2e2ee;
+            margin: 20px auto 30px;
+            text-shadow: 0 2px 8px #000000;
+        }
+
+        .hero-button {
+            display: inline-block;
+            padding: 14px 28px;
+            border: 1px solid #8a8aaa;
+            border-radius: 8px;
+            background: rgba(24, 24, 43, 0.88);
+            color: #ffffff;
+            text-decoration: none;
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4);
+        }
+
+        .hero-button:hover {
+            background: rgba(52, 52, 82, 0.94);
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 6px;
+            padding: 12px;
+            background: rgba(15, 15, 27, 0.96);
+            border-bottom: 1px solid #3b3b51;
+        }
+
+        nav a {
+            color: #d9d9e7;
+            text-decoration: none;
+            padding: 9px 14px;
+            border-radius: 6px;
+        }
+
+        nav a:hover {
+            background: #292940;
+            color: white;
+        }
+
+        main {
+            width: min(1100px, 100%);
+            margin: auto;
+            padding: 55px 20px;
+        }
+
+        section {
+            margin-bottom: 80px;
+            scroll-margin-top: 80px;
+        }
+
+        h2 {
+            font-size: clamp(28px, 5vw, 40px);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #3e3e55;
+        }
+
+        h3 {
+            color: #dddded;
+            margin-top: 0;
+        }
+
+        .intro {
+            font-size: 19px;
+            color: #c6c6d4;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns:
+                repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: rgba(22, 22, 36, 0.92);
+            border: 1px solid #38384d;
+            border-radius: 12px;
+            padding: 24px;
+        }
+
+        .card p {
+            color: #c2c2d0;
+        }
+
+        .magic-card {
+            border-top: 3px solid #62627e;
+        }
+
+        .holy {
+            border-top: 3px solid #cfcfe5;
+        }
+
+        .shadow {
+            border-top: 3px solid #716b89;
+        }
+
+        .stat-card {
+            border-top: 3px solid #66668a;
+        }
+
+        .feature {
+            border-left: 4px solid #5e5e7c;
+        }
+
+        .affinity-box {
+            background: #151522;
+            border: 1px solid #414157;
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 25px;
+        }
+
+        .percentage {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .percentage span {
+            padding: 8px 13px;
+            border-radius: 6px;
+            background: #25253a;
+            border: 1px solid #414157;
+        }
+
+        .feedback-box {
+            max-width: 800px;
+            margin: auto;
+            background: rgba(21, 21, 34, 0.96);
+            border: 1px solid #414157;
+            border-radius: 14px;
+            padding: 30px;
+        }
+
+        .feedback-box label {
+            display: block;
+            margin: 18px 0 7px;
+            font-weight: bold;
+        }
+
+        .feedback-box input,
+        .feedback-box select,
+        .feedback-box textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #4a4a61;
+            border-radius: 7px;
+            background: #0f0f1b;
+            color: #eeeeF5;
+            font: inherit;
+        }
+
+        .feedback-box textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .feedback-box input:focus,
+        .feedback-box select:focus,
+        .feedback-box textarea:focus {
+            outline: 2px solid #77779d;
+            outline-offset: 2px;
+        }
+
+        .submit-button {
+            margin-top: 25px;
+            padding: 13px 25px;
+            border: 1px solid #676783;
+            border-radius: 7px;
+            background: #292943;
+            color: white;
+            font: inherit;
+            cursor: pointer;
+        }
+
+        .submit-button:hover {
+            background: #3a3a59;
+        }
+
+        .download {
+            display: inline-block;
+            padding: 14px 25px;
+            background: #292943;
+            color: white;
+            text-decoration: none;
+            border-radius: 7px;
+            border: 1px solid #494963;
+        }
+
+        .download:hover {
+            background: #383856;
+        }
+
+        .note {
+            color: #9999aa;
+            font-size: 14px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 35px 20px;
+            background: #08080f;
+            color: #888898;
+            border-top: 1px solid #292938;
+        }
+
+        @media (max-width: 600px) {
+            header {
+                min-height: 540px;
+                background-position: 58% center;
+            }
+
+            header h1 {
+                letter-spacing: 6px;
+            }
+
+            nav {
+                position: static;
+            }
+
+            main {
+                padding: 40px 15px;
+            }
+
+            .feedback-box {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="hero-content">
+        <h1>VALINDORN</h1>
+
+        <p>
+            A world shaped by magic, choices, and discovery.
+        </p>
+
+        <a class="hero-button" href="#game">
+            Enter Valindorn
+        </a>
+    </div>
+</header>
+
+<nav>
+    <a href="#game">The Game</a>
+    <a href="#stats">Stats & Leveling</a>
+    <a href="#magic">Magic</a>
+    <a href="#affinity">Affinity</a>
+    <a href="#personality">Personality AI</a>
+    <a href="#world">World</a>
+    <a href="#feedback">Feedback</a>
+    <a href="#download">Download</a>
+</nav>
+
+<main>
+
+    <section id="game">
+        <h2>The Game</h2>
+
+        <p class="intro">
+            Valindorn is a fantasy adventure game where
+            exploration, magic, combat, character growth,
+            and player choices all come together.
+        </p>
+
+        <div class="cards">
+
+            <div class="card feature">
+                <h3>⚔️ Combat</h3>
+                <p>
+                    Fight enemies, defend yourself, use
+                    spells, manage your resources, and
+                    decide when to escape.
+                </p>
+            </div>
+
+            <div class="card feature">
+                <h3>🗺️ Exploration</h3>
+                <p>
+                    Travel between towns and explore the
+                    world beyond combat.
+                </p>
+            </div>
+
+            <div class="card feature">
+                <h3>👥 NPCs</h3>
+                <p>
+                    Talk with characters who have their
+                    own roles, personalities, and stories.
+                </p>
+            </div>
+
+            <div class="card feature">
+                <h3>📜 Contracts</h3>
+                <p>
+                    Gods and devils can offer powerful
+                    contracts, but a character cannot hold
+                    both paths at the same time.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="stats">
+        <h2>Stats & Leveling</h2>
+
+        <p class="intro">
+            Characters grow through levels. When a character
+            gains a level, they receive stat points that can
+            be spent however the player chooses.
+        </p>
+
+        <div class="cards">
+
+            <div class="card stat-card">
+                <h3>💪 Strength</h3>
+                <p>
+                    Improves physical power and the
+                    effectiveness of physical attacks.
+                </p>
+            </div>
+
+            <div class="card stat-card">
+                <h3>🛡️ Endurance</h3>
+                <p>
+                    Improves durability and helps a character
+                    withstand damage.
+                </p>
+            </div>
+
+            <div class="card stat-card">
+                <h3>✨ Spirit</h3>
+                <p>
+                    Improves the effectiveness of
+                    elemental magic. Spirit affects
+                    elemental magic only.
+                </p>
+            </div>
+
+            <div class="card stat-card">
+                <h3>⚡ Agility</h3>
+                <p>
+                    Improves speed, reflexes, and other
+                    abilities related to quick movement.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="affinity-box">
+            <h3>Player-Controlled Growth</h3>
+
+            <p>
+                Leveling does not automatically decide how
+                your character develops. The player chooses
+                where their available stat points go.
+            </p>
+
+            <p>
+                This allows different characters to develop
+                in very different ways.
+            </p>
+        </div>
+    </section>
+
+    <section id="magic">
+        <h2>Magic System</h2>
+
+        <p class="intro">
+            Magic in Valindorn is divided into elemental
+            magic and faith-based magic. Different spells
+            can have different purposes, including combat,
+            healing, support, purification, curses, and
+            other effects.
+        </p>
+
+        <div class="cards">
+
+            <div class="card magic-card">
+                <h3>🔥 Fire</h3>
+                <p>Fire, Lightning, Solar</p>
+            </div>
+
+            <div class="card magic-card">
+                <h3>💧 Water</h3>
+                <p>Water, Ice, Blood</p>
+            </div>
+
+            <div class="card magic-card">
+                <h3>🌿 Earth</h3>
+                <p>Plant, Rock, Crystal</p>
+            </div>
+
+            <div class="card magic-card">
+                <h3>🌪️ Air</h3>
+                <p>Wind, Pressure, Sound</p>
+            </div>
+
+            <div class="card holy">
+                <h3>✨ Holy</h3>
+                <p>
+                    Healing, Purification, Protection,
+                    and other supportive effects.
+                </p>
+            </div>
+
+            <div class="card shadow">
+                <h3>🌑 Shadow</h3>
+                <p>
+                    Curses, Debuffs, Shadow effects,
+                    and other abilities.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="affinity-box">
+            <h3>Magic Beyond Combat</h3>
+
+            <p>
+                Not every spell is a combat spell.
+                Healing and other useful magic can be
+                used while exploring or outside of combat
+                when the spell allows it.
+            </p>
+
+            <p>
+                A spell's effect determines how it can be
+                used rather than automatically making every
+                spell combat-only.
+            </p>
+        </div>
+    </section>
+
+    <section id="affinity">
+        <h2>Birthday Affinity</h2>
+
+        <p class="intro">
+            Every character's birthday determines their
+            natural elemental affinity.
+        </p>
+
+        <div class="affinity-box">
+
+            <p>
+                Each exact calendar date has a fixed affinity
+                profile. The same birthday will always produce
+                the same elemental percentages.
+            </p>
+
+            <div class="percentage">
+                <span>Fire</span>
+                <span>Water</span>
+                <span>Earth</span>
+                <span>Air</span>
+                <span>No Affinity</span>
+            </div>
+
+            <p>
+                The four elemental percentages do not have to
+                add up to 100%. Any remaining percentage is
+                No Affinity.
+            </p>
+
+            <p>
+                Birthday affinity determines a character's
+                natural elemental connection. Spirit is a
+                separate stat that affects the power of
+                elemental magic.
+            </p>
+
+        </div>
+    </section>
+
+    <section id="personality">
+        <h2>Personality AI</h2>
+
+        <p class="intro">
+            Valindorn learns about the player's behavior
+            through meaningful choices made during the game.
+        </p>
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>⚖️ Starting Point</h3>
+                <p>
+                    Every character begins at exactly
+                    50% Holy and 50% Shadow.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>🧠 Learning</h3>
+                <p>
+                    The game records meaningful choices and
+                    looks for patterns in the player's
+                    behavior.
+                </p>
+            </div>
+
+            <div class="card holy">
+                <h3>✨ Holy</h3>
+                <p>
+                    Choices that align with the game's Holy
+                    personality factors can influence the
+                    character's Holy percentage.
+                </p>
+            </div>
+
+            <div class="card shadow">
+                <h3>🌑 Shadow</h3>
+                <p>
+                    Shadow percentage is calculated from the
+                    Holy percentage, keeping Holy and Shadow
+                    at exactly 100% combined.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="affinity-box">
+            <h3>Holy & Shadow Are Separate From Elemental Affinity</h3>
+
+            <p>
+                A character's elemental affinity does not
+                determine whether they are Holy or Shadow.
+                The Personality AI learns that aspect from
+                the player's behavior.
+            </p>
+
+            <p>
+                Spirit affects elemental magic, while the
+                Holy/Shadow balance represents a different
+                part of the character's development.
+            </p>
+        </div>
+    </section>
+
+    <section id="world">
+        <h2>The World</h2>
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>🏡 Havenbrook</h3>
+                <p>
+                    A peaceful town surrounded by forests
+                    and farmland.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>🛡️ Stonewatch</h3>
+                <p>
+                    A fortified town built beside an
+                    ancient stone road.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="feedback">
+        <h2>Valindorn Feedback</h2>
+
+        <p class="intro">
+            Your feedback can help improve Valindorn and
+            especially the game's Personality AI.
+        </p>
+
+        <div class="feedback-box">
+
+            <form
+                action="https://formspree.io/f/myezdvnl"
+                method="POST"
+            >
+
+                <label for="feedback-type">
+                    What are you giving feedback about?
+                </label>
+
+                <select
+                    id="feedback-type"
+                    name="feedback_type"
+                    required
+                >
+                    <option value="">Select an option</option>
+                    <option value="Game">The Game</option>
+                    <option value="Personality AI">Personality AI</option>
+                    <option value="Magic">Magic System</option>
+                    <option value="Stats">Stats & Leveling</option>
+                    <option value="Birthday Affinity">Birthday Affinity</option>
+                    <option value="Combat">Combat</option>
+                    <option value="World">World</option>
+                    <option value="NPCs">NPCs</option>
+                    <option value="Website">Website</option>
+                    <option value="Other">Other</option>
+                </select>
+
+                <label for="feedback">Your feedback</label>
+
+                <textarea
+                    id="feedback"
+                    name="feedback"
+                    placeholder="Tell us what you think..."
+                    required
+                ></textarea>
+
+                <label for="ai-feedback">
+                    What did you think of the Personality AI?
+                </label>
+
+                <textarea
+                    id="ai-feedback"
+                    name="personality_ai_feedback"
+                    placeholder="Optional"
+                ></textarea>
+
+                <label for="suggestions">Suggestions</label>
+
+                <textarea
+                    id="suggestions"
+                    name="suggestions"
+                    placeholder="What would you like to see changed or added?"
+                ></textarea>
+
+                <label for="email">Email</label>
+
+                <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    placeholder="Optional"
+                >
+
+                <p class="note">
+                    Email is optional. You can send feedback
+                    without providing one.
+                </p>
+
+                <button
+                    class="submit-button"
+                    type="submit"
+                >
+                    Send Feedback
+                </button>
+
+            </form>
+
+        </div>
+    </section>
+
+    <section id="download">
+        <h2>Download</h2>
+
+        <p class="intro">
+            The Valindorn game download will be available
+            here when the first release is ready.
+        </p>
+
+        <a class="download" href="#">
+            Coming Soon
+        </a>
+    </section>
+
+</main>
+
+<footer>
+    <p>Valindorn &copy; 2026</p>
+
+    <p>
+        A world shaped by magic, choices, and discovery.
+    </p>
+</footer>
+
+</body>
+</html>
