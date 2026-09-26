@@ -11,114 +11,231 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             margin: 0;
             font-family: Georgia, "Times New Roman", serif;
-            background: #0b0b14;
+            background:
+                radial-gradient(circle at top, #20203a 0%, #0b0b14 45%);
             color: #eeeef5;
+            line-height: 1.7;
         }
 
         header {
-            padding: 70px 20px;
+            min-height: 520px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-align: center;
+            padding: 80px 20px;
             background:
                 linear-gradient(
-                    rgba(10, 8, 25, 0.75),
-                    rgba(10, 8, 25, 0.95)
+                    rgba(8, 7, 20, 0.35),
+                    rgba(8, 7, 20, 0.92)
                 );
-            border-bottom: 1px solid #39394d;
+            border-bottom: 1px solid #44445c;
+        }
+
+        .hero-content {
+            max-width: 900px;
         }
 
         header h1 {
             margin: 0;
-            font-size: 64px;
-            letter-spacing: 8px;
+            font-size: clamp(48px, 10vw, 88px);
+            letter-spacing: 12px;
+            text-shadow: 0 0 25px #7777aa;
         }
 
         header p {
-            font-size: 20px;
-            color: #b9b9ca;
-            margin-top: 15px;
+            font-size: clamp(18px, 3vw, 25px);
+            color: #c9c9d8;
+            margin: 20px auto 30px;
+        }
+
+        .hero-button {
+            display: inline-block;
+            padding: 14px 28px;
+            border: 1px solid #66668a;
+            border-radius: 8px;
+            background: #24243b;
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .hero-button:hover {
+            background: #343452;
         }
 
         nav {
+            position: sticky;
+            top: 0;
+            z-index: 10;
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 10px;
-            padding: 15px;
-            background: #12121f;
-            border-bottom: 1px solid #39394d;
+            gap: 6px;
+            padding: 12px;
+            background: rgba(15, 15, 27, 0.96);
+            border-bottom: 1px solid #3b3b51;
         }
 
         nav a {
-            color: #ddddea;
+            color: #d9d9e7;
             text-decoration: none;
-            padding: 10px 16px;
+            padding: 9px 14px;
             border-radius: 6px;
         }
 
         nav a:hover {
-            background: #27273c;
+            background: #292940;
+            color: white;
         }
 
         main {
-            max-width: 1000px;
+            width: min(1100px, 100%);
             margin: auto;
-            padding: 40px 20px;
+            padding: 55px 20px;
         }
 
         section {
-            margin-bottom: 55px;
+            margin-bottom: 80px;
+            scroll-margin-top: 80px;
         }
 
         h2 {
-            font-size: 32px;
-            border-bottom: 1px solid #39394d;
+            font-size: clamp(28px, 5vw, 40px);
+            margin-bottom: 20px;
             padding-bottom: 10px;
+            border-bottom: 1px solid #3e3e55;
         }
 
-        .hero {
-            text-align: center;
-            padding: 60px 20px;
+        h3 {
+            color: #dddded;
+            margin-top: 0;
         }
 
-        .hero h2 {
-            border: none;
-            font-size: 38px;
+        .intro {
+            font-size: 19px;
+            color: #c6c6d4;
         }
 
         .cards {
             display: grid;
-            grid-template-columns: repeat(
-                auto-fit,
-                minmax(220px, 1fr)
-            );
+            grid-template-columns:
+                repeat(auto-fit, minmax(220px, 1fr));
             gap: 20px;
         }
 
         .card {
-            background: #151522;
-            border: 1px solid #343447;
-            border-radius: 10px;
-            padding: 22px;
+            background: rgba(22, 22, 36, 0.92);
+            border: 1px solid #38384d;
+            border-radius: 12px;
+            padding: 24px;
         }
 
-        .card h3 {
-            margin-top: 0;
+        .card p {
+            color: #c2c2d0;
+        }
+
+        .magic-card {
+            border-top: 3px solid #62627e;
         }
 
         .holy {
-            border-left: 4px solid #d9d9ff;
+            border-top: 3px solid #cfcfe5;
         }
 
         .shadow {
-            border-left: 4px solid #77718f;
+            border-top: 3px solid #716b89;
+        }
+
+        .feature {
+            border-left: 4px solid #5e5e7c;
+        }
+
+        .affinity-box {
+            background: #151522;
+            border: 1px solid #414157;
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 25px;
+        }
+
+        .percentage {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .percentage span {
+            padding: 8px 13px;
+            border-radius: 6px;
+            background: #25253a;
+            border: 1px solid #414157;
+        }
+
+        .feedback-box {
+            max-width: 800px;
+            margin: auto;
+            background: rgba(21, 21, 34, 0.96);
+            border: 1px solid #414157;
+            border-radius: 14px;
+            padding: 30px;
+        }
+
+        .feedback-box label {
+            display: block;
+            margin: 18px 0 7px;
+            font-weight: bold;
+        }
+
+        .feedback-box input,
+        .feedback-box select,
+        .feedback-box textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #4a4a61;
+            border-radius: 7px;
+            background: #0f0f1b;
+            color: #eeeeF5;
+            font: inherit;
+        }
+
+        .feedback-box textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .feedback-box input:focus,
+        .feedback-box select:focus,
+        .feedback-box textarea:focus {
+            outline: 2px solid #77779d;
+            outline-offset: 2px;
+        }
+
+        .submit-button {
+            margin-top: 25px;
+            padding: 13px 25px;
+            border: 1px solid #676783;
+            border-radius: 7px;
+            background: #292943;
+            color: white;
+            font: inherit;
+            cursor: pointer;
+        }
+
+        .submit-button:hover {
+            background: #3a3a59;
         }
 
         .download {
             display: inline-block;
-            padding: 14px 24px;
+            padding: 14px 25px;
             background: #292943;
             color: white;
             text-decoration: none;
@@ -130,9 +247,14 @@
             background: #383856;
         }
 
+        .note {
+            color: #9999aa;
+            font-size: 14px;
+        }
+
         footer {
             text-align: center;
-            padding: 30px 20px;
+            padding: 35px 20px;
             background: #08080f;
             color: #888898;
             border-top: 1px solid #292938;
@@ -140,11 +262,19 @@
 
         @media (max-width: 600px) {
             header h1 {
-                font-size: 42px;
+                letter-spacing: 6px;
             }
 
-            header p {
-                font-size: 17px;
+            nav {
+                position: static;
+            }
+
+            main {
+                padding: 40px 15px;
+            }
+
+            .feedback-box {
+                padding: 20px;
             }
         }
     </style>
@@ -153,90 +283,214 @@
 <body>
 
 <header>
-    <h1>VALINDORN</h1>
-    <p>A world of magic, choices, and discovery.</p>
+    <div class="hero-content">
+        <h1>VALINDORN</h1>
+
+        <p>
+            A world shaped by magic, choices, and discovery.
+        </p>
+
+        <a class="hero-button" href="#game">
+            Enter Valindorn
+        </a>
+    </div>
 </header>
 
 <nav>
     <a href="#game">The Game</a>
     <a href="#magic">Magic</a>
+    <a href="#affinity">Affinity</a>
     <a href="#personality">Personality AI</a>
     <a href="#world">World</a>
+    <a href="#feedback">Feedback</a>
     <a href="#download">Download</a>
 </nav>
 
 <main>
 
-    <section class="hero">
-        <h2>Welcome to Valindorn</h2>
-        <p>
-            Explore a fantasy world where your choices help shape
-            the kind of magic your character can wield.
-        </p>
-    </section>
-
     <section id="game">
         <h2>The Game</h2>
 
-        <p>
-            Valindorn is a fantasy adventure game focused on
-            exploration, magic, combat, towns, characters,
-            and player choices.
+        <p class="intro">
+            Valindorn is a fantasy adventure game where
+            exploration, magic, combat, and player choices
+            all come together.
         </p>
-    </section>
-
-    <section id="magic">
-        <h2>Magic System</h2>
 
         <div class="cards">
 
-            <div class="card">
-                <h3>Elemental Magic</h3>
+            <div class="card feature">
+                <h3>⚔️ Combat</h3>
                 <p>
-                    Fire, Water, Earth, and Air each contain
-                    multiple forms of magic.
+                    Fight enemies, defend yourself, use
+                    spells, and decide when to escape.
                 </p>
             </div>
 
-            <div class="card holy">
-                <h3>Holy Magic</h3>
+            <div class="card feature">
+                <h3>🗺️ Exploration</h3>
                 <p>
-                    Healing, Purification, and Buffing.
+                    Travel between towns and discover
+                    what the world has to offer.
                 </p>
             </div>
 
-            <div class="card shadow">
-                <h3>Shadow Magic</h3>
+            <div class="card feature">
+                <h3>👥 NPCs</h3>
                 <p>
-                    Shadow, Cursing, and Debuffing.
+                    Talk with characters who have their
+                    own roles and stories.
+                </p>
+            </div>
+
+            <div class="card feature">
+                <h3>📜 Contracts</h3>
+                <p>
+                    Gods and devils can offer powerful
+                    contracts, but their paths cannot
+                    be combined.
                 </p>
             </div>
 
         </div>
     </section>
 
+
+    <section id="magic">
+        <h2>Magic System</h2>
+
+        <p class="intro">
+            Magic in Valindorn is divided into elemental
+            magic and faith-based magic.
+        </p>
+
+        <div class="cards">
+
+            <div class="card magic-card">
+                <h3>🔥 Fire</h3>
+                <p>
+                    Fire, Lightning, Solar
+                </p>
+            </div>
+
+            <div class="card magic-card">
+                <h3>💧 Water</h3>
+                <p>
+                    Water, Ice, Blood
+                </p>
+            </div>
+
+            <div class="card magic-card">
+                <h3>🌿 Earth</h3>
+                <p>
+                    Plant, Rock, Crystal
+                </p>
+            </div>
+
+            <div class="card magic-card">
+                <h3>🌪️ Air</h3>
+                <p>
+                    Wind, Pressure, Sound
+                </p>
+            </div>
+
+            <div class="card holy">
+                <h3>✨ Holy</h3>
+                <p>
+                    Healing, Purification, Buffing
+                </p>
+            </div>
+
+            <div class="card shadow">
+                <h3>🌑 Shadow</h3>
+                <p>
+                    Shadow, Cursing, Debuffing
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+
+    <section id="affinity">
+        <h2>Birthday Affinity</h2>
+
+        <p class="intro">
+            Every character's birthday determines their
+            natural elemental affinity.
+        </p>
+
+        <div class="affinity-box">
+            <p>
+                Each exact calendar date has a fixed affinity
+                profile. The same birthday will always produce
+                the same elemental percentages.
+            </p>
+
+            <div class="percentage">
+                <span>Fire</span>
+                <span>Water</span>
+                <span>Earth</span>
+                <span>Air</span>
+                <span>No Affinity</span>
+            </div>
+
+            <p>
+                The four elemental percentages do not have to
+                add up to 100%. Any remaining percentage is
+                No Affinity.
+            </p>
+        </div>
+    </section>
+
+
     <section id="personality">
         <h2>Personality AI</h2>
 
-        <p>
-            Valindorn's personality system learns from the
-            player's actions instead of asking the player to
-            choose a predetermined alignment.
+        <p class="intro">
+            Valindorn learns about the player's behavior
+            through the choices they make during the game.
         </p>
 
-        <p>
-            The player begins with a balanced
-            <strong>50% Holy / 50% Shadow</strong>.
-            As the player makes choices throughout the game,
-            the personality system analyzes those choices and
-            adjusts the Holy percentage.
-        </p>
+        <div class="cards">
 
-        <p>
-            Shadow percentage is always calculated as the
-            remainder, keeping the two values at exactly 100%.
-        </p>
+            <div class="card">
+                <h3>⚖️ Starting Point</h3>
+                <p>
+                    Every character begins at exactly
+                    50% Holy and 50% Shadow.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>🧠 Learning</h3>
+                <p>
+                    The game records meaningful choices and
+                    looks for patterns in the player's behavior.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>✨ Holy</h3>
+                <p>
+                    The learned personality can shift the
+                    character's Holy percentage based on
+                    their actions.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>🌑 Shadow</h3>
+                <p>
+                    Shadow percentage is always calculated
+                    from the Holy percentage, keeping the
+                    two values at exactly 100% combined.
+                </p>
+            </div>
+
+        </div>
     </section>
+
 
     <section id="world">
         <h2>The World</h2>
@@ -244,7 +498,7 @@
         <div class="cards">
 
             <div class="card">
-                <h3>Havenbrook</h3>
+                <h3>🏡 Havenbrook</h3>
                 <p>
                     A peaceful town surrounded by forests
                     and farmland.
@@ -252,22 +506,153 @@
             </div>
 
             <div class="card">
-                <h3>Stonewatch</h3>
+                <h3>🛡️ Stonewatch</h3>
                 <p>
-                    A fortified town beside an ancient
-                    stone road.
+                    A fortified town built beside an
+                    ancient stone road.
                 </p>
             </div>
 
         </div>
     </section>
 
+
+    <section id="feedback">
+        <h2>Valindorn Feedback</h2>
+
+        <p class="intro">
+            Your feedback can help improve Valindorn and
+            especially the game's Personality AI.
+        </p>
+
+        <div class="feedback-box">
+
+            <form
+                action="https://formspree.io/f/myezdvnl"
+                method="POST"
+            >
+
+                <label for="feedback-type">
+                    What are you giving feedback about?
+                </label>
+
+                <select
+                    id="feedback-type"
+                    name="feedback_type"
+                    required
+                >
+                    <option value="">
+                        Select an option
+                    </option>
+
+                    <option value="Game">
+                        The Game
+                    </option>
+
+                    <option value="Personality AI">
+                        Personality AI
+                    </option>
+
+                    <option value="Magic">
+                        Magic System
+                    </option>
+
+                    <option value="Birthday Affinity">
+                        Birthday Affinity
+                    </option>
+
+                    <option value="Combat">
+                        Combat
+                    </option>
+
+                    <option value="World">
+                        World
+                    </option>
+
+                    <option value="NPCs">
+                        NPCs
+                    </option>
+
+                    <option value="Website">
+                        Website
+                    </option>
+
+                    <option value="Other">
+                        Other
+                    </option>
+                </select>
+
+
+                <label for="feedback">
+                    Your feedback
+                </label>
+
+                <textarea
+                    id="feedback"
+                    name="feedback"
+                    placeholder="Tell us what you think..."
+                    required
+                ></textarea>
+
+
+                <label for="ai-feedback">
+                    What did you think of the Personality AI?
+                </label>
+
+                <textarea
+                    id="ai-feedback"
+                    name="personality_ai_feedback"
+                    placeholder="Optional"
+                ></textarea>
+
+
+                <label for="suggestions">
+                    Suggestions
+                </label>
+
+                <textarea
+                    id="suggestions"
+                    name="suggestions"
+                    placeholder="What would you like to see changed or added?"
+                ></textarea>
+
+
+                <label for="email">
+                    Email
+                </label>
+
+                <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    placeholder="Optional"
+                >
+
+                <p class="note">
+                    Email is optional. You can send feedback
+                    without providing one.
+                </p>
+
+
+                <button
+                    class="submit-button"
+                    type="submit"
+                >
+                    Send Feedback
+                </button>
+
+            </form>
+
+        </div>
+    </section>
+
+
     <section id="download">
         <h2>Download</h2>
 
-        <p>
-            The Valindorn game download will be available here
-            when the first release is ready.
+        <p class="intro">
+            The Valindorn game download will be available
+            here when the first release is ready.
         </p>
 
         <a class="download" href="#">
@@ -277,8 +662,15 @@
 
 </main>
 
+
 <footer>
-    <p>Valindorn &copy; 2026</p>
+    <p>
+        Valindorn &copy; 2026
+    </p>
+
+    <p>
+        A world shaped by magic, choices, and discovery.
+    </p>
 </footer>
 
 </body>
