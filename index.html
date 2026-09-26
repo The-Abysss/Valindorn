@@ -1,1 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>Valindorn</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Georgia, "Times New Roman", serif;
+            background: #0b0b14;
+            color: #eeeef5;
+        }
+
+        header {
+            padding: 70px 20px;
+            text-align: center;
+            background:
+                linear-gradient(
+                    rgba(10, 8, 25, 0.75),
+                    rgba(10, 8, 25, 0.95)
+                );
+            border-bottom: 1px solid #39394d;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 64px;
+            letter-spacing: 8px;
+        }
+
+        header p {
+            font-size: 20px;
+            color: #b9b9ca;
+            margin-top: 15px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 15px;
+            background: #12121f;
+            border-bottom: 1px solid #39394d;
+        }
+
+        nav a {
+            color: #ddddea;
+            text-decoration: none;
+            padding: 10px 16px;
+            border-radius: 6px;
+        }
+
+        nav a:hover {
+            background: #27273c;
+        }
+
+        main {
+            max-width: 1000px;
+            margin: auto;
+            padding: 40px 20px;
+        }
+
+        section {
+            margin-bottom: 55px;
+        }
+
+        h2 {
+            font-size: 32px;
+            border-bottom: 1px solid #39394d;
+            padding-bottom: 10px;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .hero h2 {
+            border: none;
+            font-size: 38px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(
+                auto-fit,
+                minmax(220px, 1fr)
+            );
+            gap: 20px;
+        }
+
+        .card {
+            background: #151522;
+            border: 1px solid #343447;
+            border-radius: 10px;
+            padding: 22px;
+        }
+
+        .card h3 {
+            margin-top: 0;
+        }
+
+        .holy {
+            border-left: 4px solid #d9d9ff;
+        }
+
+        .shadow {
+            border-left: 4px solid #77718f;
+        }
+
+        .download {
+            display: inline-block;
+            padding: 14px 24px;
+            background: #292943;
+            color: white;
+            text-decoration: none;
+            border-radius: 7px;
+            border: 1px solid #494963;
+        }
+
+        .download:hover {
+            background: #383856;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            background: #08080f;
+            color: #888898;
+            border-top: 1px solid #292938;
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 42px;
+            }
+
+            header p {
+                font-size: 17px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>VALINDORN</h1>
+    <p>A world of magic, choices, and discovery.</p>
+</header>
+
+<nav>
+    <a href="#game">The Game</a>
+    <a href="#magic">Magic</a>
+    <a href="#personality">Personality AI</a>
+    <a href="#world">World</a>
+    <a href="#download">Download</a>
+</nav>
+
+<main>
+
+    <section class="hero">
+        <h2>Welcome to Valindorn</h2>
+        <p>
+            Explore a fantasy world where your choices help shape
+            the kind of magic your character can wield.
+        </p>
+    </section>
+
+    <section id="game">
+        <h2>The Game</h2>
+
+        <p>
+            Valindorn is a fantasy adventure game focused on
+            exploration, magic, combat, towns, characters,
+            and player choices.
+        </p>
+    </section>
+
+    <section id="magic">
+        <h2>Magic System</h2>
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>Elemental Magic</h3>
+                <p>
+                    Fire, Water, Earth, and Air each contain
+                    multiple forms of magic.
+                </p>
+            </div>
+
+            <div class="card holy">
+                <h3>Holy Magic</h3>
+                <p>
+                    Healing, Purification, and Buffing.
+                </p>
+            </div>
+
+            <div class="card shadow">
+                <h3>Shadow Magic</h3>
+                <p>
+                    Shadow, Cursing, and Debuffing.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="personality">
+        <h2>Personality AI</h2>
+
+        <p>
+            Valindorn's personality system learns from the
+            player's actions instead of asking the player to
+            choose a predetermined alignment.
+        </p>
+
+        <p>
+            The player begins with a balanced
+            <strong>50% Holy / 50% Shadow</strong>.
+            As the player makes choices throughout the game,
+            the personality system analyzes those choices and
+            adjusts the Holy percentage.
+        </p>
+
+        <p>
+            Shadow percentage is always calculated as the
+            remainder, keeping the two values at exactly 100%.
+        </p>
+    </section>
+
+    <section id="world">
+        <h2>The World</h2>
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>Havenbrook</h3>
+                <p>
+                    A peaceful town surrounded by forests
+                    and farmland.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Stonewatch</h3>
+                <p>
+                    A fortified town beside an ancient
+                    stone road.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="download">
+        <h2>Download</h2>
+
+        <p>
+            The Valindorn game download will be available here
+            when the first release is ready.
+        </p>
+
+        <a class="download" href="#">
+            Coming Soon
+        </a>
+    </section>
+
+</main>
+
+<footer>
+    <p>Valindorn &copy; 2026</p>
+</footer>
+
+</body>
+</html>
